@@ -1,20 +1,20 @@
 steps:
   # Build and Push Docker Image 1
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/t-project-449309/gke-cicd/quickstart-image:${SHORT_SHA}', './app1']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/t-project-449309/gke-cicd/quickstart-image:${_SHORT_SHA}', './app1']
     id: 'Build Docker Image 1'
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/gke-cicdt-project-449309/quickstart-image:${SHORT_SHA}']
+    args: ['push', 'us-central1-docker.pkg.dev/gke-cicdt-project-449309/quickstart-image:${_SHORT_SHA}']
     id: 'Push Docker Image 1'
 
   # Build and Push Docker Image 2
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/t-project-449309/gke-cicd/flask-image:${SHORT_SHA}', './app2']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/t-project-449309/gke-cicd/flask-image:${_SHORT_SHA}', './app2']
     id: 'Build Docker Image 2'
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/t-project-449309/gke-cicd/flask-image:${SHORT_SHA}']
+    args: ['push', 'us-central1-docker.pkg.dev/t-project-449309/gke-cicd/flask-image:${_SHORT_SHA}']
     id: 'Push Docker Image 2'
 
   # Deploy the application
@@ -26,7 +26,7 @@ steps:
     - |
         gcloud deploy apply --file deploy/pipeline.yaml --region=us-central1
         gcloud deploy apply --file deploy/dev.yaml --region=us-central1
-        gcloud deploy releases create 'app-release-${${SHORT_SHA}}' --delivery-pipeline=gke-cicd-pipeline --region=us-central1 --skaffold-file=skaffold.yaml
+        gcloud deploy releases create 'app-release-${${_SHORT_SHA}}' --delivery-pipeline=gke-cicd-pipeline --region=us-central1 --skaffold-file=skaffold.yaml
 
 options:
   logging: CLOUD_LOGGING_ONLY
