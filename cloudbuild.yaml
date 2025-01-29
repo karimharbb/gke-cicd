@@ -31,9 +31,18 @@ steps:
 options:
   logging: CLOUD_LOGGING_ONLY
 
-substitutions:
-  _SHORT_SHA: "${SHORT_SHA}"
+images:
+  - "us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/${_IMAGE_NAME}:${_SHORT_SHA}"
 
+substitutions:
+  _DEPLOYMENT_NAME: "my-deployment"
+  _IMAGE_NAME: "poc-test"
+  _PROJECT_ID: "poc-test-447813"
+  _SHORT_SHA: "${SHORT_SHA}"
+  _RELEASE_NAME: "v-${SHORT_SHA}" # Specify your release version
+  _PIPELINE: "poc-pipeline" # The pipeline name created in Cloud Deploy
+  _REPO_NAME: "poc-test" # The repository name for your Docker image
+   
 
 
 
