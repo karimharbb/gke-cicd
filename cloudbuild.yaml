@@ -1,20 +1,20 @@
 steps:
   # Build and Push Docker Image 1
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/t-project-449309/gke-repo/quickstart-image:v1', './app1']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/t-project-449309/gke-cicd/quickstart-image:v1', './app1']
     id: 'Build Docker Image 1'
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/t-project-449309/gke-repo/quickstart-image:v1']
+    args: ['push', 'us-central1-docker.pkg.dev/t-project-449309/gke-cicd/quickstart-image:v1']
     id: 'Push Docker Image 1'
 
   # Build and Push Docker Image 2
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/t-project-449309/gke-repo/flask-image:v1', './app2']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/t-project-449309/gke-cicd/flask-image:v1', './app2']
     id: 'Build Docker Image 2'
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/t-project-449309/gke-repo/flask-image:v1']
+    args: ['push', 'us-central1-docker.pkg.dev/t-project-449309/gke-cicd/flask-image:v1']
     id: 'Push Docker Image 2'
 
   # Deploy the application
