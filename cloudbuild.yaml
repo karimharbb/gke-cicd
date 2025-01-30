@@ -53,6 +53,6 @@ substitutions:
   _PROJECT_ID: "t-project-449309"  # Replace with your actual project ID
   _SHORT_SHA: "${SHORT_SHA}"
   _RELEASE_NAME: "v-${SHORT_SHA}"  # Specify your release version
-  _PIPELINE: "poc-pipeline"  # The pipeline name created in Cloud Deploy
+  _PIPELINE: "gke-cicd-pipeline"  # The pipeline name created in Cloud Deploy
   _REPO_NAME: "gke-cicd"  # The repository name for your Docker image
   _CLUSTER_NAME: "cluster-1"  # Replace with your actual GKE cluster name
