@@ -54,5 +54,5 @@ substitutions:
   _SHORT_SHA: "${SHORT_SHA}"
   _RELEASE_NAME: "v-${SHORT_SHA}"  # Specify your release version
   # _PIPELINE: "poc-pipeline"  # The pipeline name created in Cloud Deploy
-   gke-cicd: "poc-test"  # The repository name for your Docker image
+  _gke-cicd: "poc-test"  # The repository name for your Docker image
   _CLUSTER_NAME: "your-gke-cluster-name"  # Add your GKE cluster name here
