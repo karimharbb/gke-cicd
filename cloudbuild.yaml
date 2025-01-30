@@ -48,4 +48,4 @@ deploy:
   cloudrun:
     projectId: t-project-449309
     region: us-central1
-    service: my-service
+    service: 482203088783-compute@developer.gserviceaccount.com
