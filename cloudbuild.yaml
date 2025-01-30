@@ -5,7 +5,7 @@ steps:
     id: 'Build Docker Image 1'
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/gke-cicd/t-project-449309/quickstart-image:${_SHORT_SHA}']
+    args: ['push', 'us-central1-docker.pkg.dev/t-project-449309/gke-cicd/quickstart-image:${_SHORT_SHA}']
     id: 'Push Docker Image 1'
 
   # Build and Push Docker Image 2
