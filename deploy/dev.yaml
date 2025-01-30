@@ -1,7 +1,10 @@
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
-  name: dev-target
-spec:
-  gke:
-    cluster: projects/${_PROJECT_ID}/locations/us-central1/clusters/${_CLUSTER_NAME}
+  name: dev
+  annotations: {}
+  labels: {}
+description: dev
+gke:
+  cluster: projects/t-project-449309/locations/us-central1-c/clusters/cluster-1
+
