@@ -6,15 +6,12 @@ build:
   local: {}
 manifests:
   rawYaml:
-    - ./kubernetes/*
-deploy:
-  kubectl: {}
-  logs:
-    prefix: container
-
+    - ./kubernetes/*  # Path to your Kubernetes manifests
 deploy:
   kubectl:
     manifests:
       paths:
-        - k8s/prod/*
-    context: gke_my-project_us-central1_my-cluster
+        - ./kubernetes/*  # Path to your Kubernetes manifests
+    context: gke_${t-project-449309}_us-central1_${cluster-1}  # GKE cluster context
+  logs:
+    prefix: container
