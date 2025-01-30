@@ -1,5 +1,4 @@
 steps:
- steps:
   # Build Docker Image 1
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'us-central1-docker.pkg.dev/t-project-449309/gke-cicd/quickstart-image:${_SHORT_SHA}', './app1']
