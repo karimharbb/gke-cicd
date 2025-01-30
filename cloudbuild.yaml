@@ -50,7 +50,7 @@ images:
 substitutions:
 
   _t-project-449309: "${_t-project-449309}"  # Replace with the actual project ID
-  gke-cicd: "${gke-cicd}"      # Replace with the actual repository name
+  gke-cicd: "gke-cicd"      # Replace with the actual repository name
   _DEPLOYMENT_NAME: "my-deployment"
   _IMAGE_NAME: "poc-test"
   _t-project-449309: "poc-test-447813"
