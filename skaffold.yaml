@@ -11,3 +11,10 @@ deploy:
   kubectl: {}
   logs:
     prefix: container
+
+deploy:
+  kubectl:
+    manifests:
+      paths:
+        - k8s/prod/*
+    context: gke_my-project_us-central1_my-cluster

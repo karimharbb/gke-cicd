@@ -44,6 +44,8 @@ substitutions:
   _PIPELINE: "poc-pipeline" # The pipeline name created in Cloud Deploy
   _REPO_NAME: "poc-test" # The repository name for your Docker image
    
-
-#y
-
+deploy:
+  cloudrun:
+    projectId: t-project-449309
+    region: us-central1
+    service: my-service
