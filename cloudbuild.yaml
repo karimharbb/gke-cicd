@@ -56,3 +56,4 @@ substitutions:
   _PIPELINE: "gke-cicd-pipeline"  # The pipeline name created in Cloud Deploy
   _REPO_NAME: "gke-cicd"  # The repository name for your Docker image
   _CLUSTER_NAME: "cluster-1"  # Replace with your actual GKE cluster name
+  
