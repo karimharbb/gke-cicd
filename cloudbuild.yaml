@@ -1,3 +1,4 @@
+
 steps:
   # Build Docker Image 1
   - name: 'gcr.io/cloud-builders/docker'
@@ -57,4 +58,3 @@ substitutions:
   _REPO_NAME: "gke-cicd"  # The repository name for your Docker image
   _CLUSTER_NAME: "cluster-1"  # Replace with your actual GKE cluster name
   
-#h
