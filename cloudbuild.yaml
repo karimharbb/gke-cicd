@@ -40,40 +40,6 @@ steps:
         gcloud deploy releases create 'app-release-${_SHORT_SHA}' --delivery-pipeline=${_PIPELINE} --region=us-central1 --skaffold-file=skaffold.yaml
     id: 'Deploy Application'
 
-# # Deploy the application using Cloud Deploy
-# - name: 'google/cloud-sdk:latest'
-#   entrypoint: 'sh'
-#   args:
-#     - -xe
-#     - -c
-#     - |
-#       # Apply the Target and DeliveryPipeline
-#       gcloud deploy apply --file deploy/pipeline.yaml --region=us-central1
-#       gcloud deploy apply --file deploy/prod-target.yaml --region=us-central1  # If prod exists
-#       # Create the release
-#       gcloud deploy releases create 'app-release-${_SHORT_SHA}' \
-#         --delivery-pipeline=${_PIPELINE} \
-#         --region=us-central1 \
-#         --skaffold-file=skaffold.yaml
-#   id: 'Deploy Application'
-#ghg
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 options:
   logging: CLOUD_LOGGING_ONLY
 
