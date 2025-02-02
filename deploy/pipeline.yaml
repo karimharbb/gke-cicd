@@ -18,4 +18,4 @@ metadata:
 description: cicd delivery pipeline
 serialPipeline:
   stages:
-    - targetId: dev-target  # Must match the Target name above #
+    - targetId: dev-target  # Must match the Target name above #k
