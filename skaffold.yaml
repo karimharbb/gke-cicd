@@ -11,3 +11,22 @@ deploy:
   kubectl: {}
   logs:
     prefix: container
+
+
+
+
+apiVersion: skaffold/v4beta9
+kind: Config
+build:
+  tagPolicy:
+    gitCommit: {}  # Ensures tags are based on git commit SHA
+  local: {}  # Builds locally, no specific customizations
+
+manifests:
+  rawYaml:
+    - ./kubernetes/*  # Include all Kubernetes manifests in this folder
+
+deploy:
+  kubectl: {}  # Deploys using kubectl
+  logs:
+    prefix: container  # Optional: Prefix for logs
