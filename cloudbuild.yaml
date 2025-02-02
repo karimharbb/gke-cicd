@@ -28,7 +28,8 @@ steps:
         gcloud container clusters get-credentials ${_CLUSTER_NAME} --region us-central1 --project ${_PROJECT_ID}
     id: 'Authenticate to GKE'
 
- # Deploy the application using Cloud Deploy
+ #Deploy the application using Cloud Deploy
+ 
 - name: 'google/cloud-sdk:latest'
   entrypoint: 'sh'
   args:
