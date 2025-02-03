@@ -17,4 +17,4 @@ metadata:
 description: cicd delivery pipeline
 serialPipeline:
   stages:
-    - targetId: cicd-pipeline-target-1 # Correct reference
+    - targetId: cicd-pipeline-target-1 # Correct referencee
