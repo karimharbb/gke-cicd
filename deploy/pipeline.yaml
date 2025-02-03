@@ -1,15 +1,14 @@
-# deploy/pipeline.yaml
+# Target
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
-  name: dev-target
-  annotations: {}
-  labels: {}
+  name: cicd-pipeline-target-1
 description: dev
 gke:
   cluster: projects/t-project-449309/locations/us-central1/clusters/cluster-1
-
-apiVersion: deploy.cloud.google.com/v1  # Corrected API version
+---
+# DeliveryPipeline
+apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
   name: cicd-pipeline
@@ -18,8 +17,4 @@ metadata:
 description: cicd delivery pipeline
 serialPipeline:
   stages:
-    - targetId: cicd-pipeline-target-1  # Must match the Target name above #k
-
-
-
-    
+    - targetId: cicd-pipeline-target-1 # Correct reference
