@@ -11,3 +11,13 @@ deploy:
   kubectl: {}
   logs:
     prefix: container
+deploy:
+  kubectl:
+    manifests:
+      paths: ["./kubernetes/*.yaml"]
+
+# Profile for the new cluster
+profiles:
+  - name: my-first-cluster-1
+    deploy:
+      kubeContext: my-first-cluster-1 

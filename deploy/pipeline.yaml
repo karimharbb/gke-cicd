@@ -20,6 +20,11 @@ serialPipeline:
   stages:
     - targetId: dev-target  # Must match the Target name above #k
 
-
+  # Deploy to New Cluster
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: ['apply', '-f', 'kubernetes/manifests']
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+      - 'CLOUDSDK_CONTAINER_CLUSTER= my-first-cluster-1'
 
     
