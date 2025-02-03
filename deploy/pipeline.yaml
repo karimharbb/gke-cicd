@@ -12,19 +12,14 @@ gke:
 apiVersion: deploy.cloud.google.com/v1  # Corrected API version
 kind: DeliveryPipeline
 metadata:
-  name: gke-cicd-pipeline
+  name: cicd-pipeline
   labels:
     app: cicd
 description: cicd delivery pipeline
 serialPipeline:
   stages:
-    - targetId: dev-target  # Must match the Target name above #k
+    - targetId: cicd-pipeline-target-1  # Must match the Target name above #k
 
-  # Deploy to New Cluster
-  - name: 'gcr.io/cloud-builders/kubectl'
-    args: ['apply', '-f', 'kubernetes/manifests']
-    env:
-      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
-      - 'CLOUDSDK_CONTAINER_CLUSTER= my-first-cluster-1'
+
 
     
