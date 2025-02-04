@@ -9,5 +9,5 @@ metadata:
 description: cicd delivery pipeline
 serialPipeline:
   stages:
-    - targetId: dev # Correct referencee
+    - targetId: cicd-pipeline # Correct referencee
     - targetId: prod
