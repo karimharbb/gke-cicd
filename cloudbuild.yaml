@@ -30,7 +30,7 @@ steps:
     id: 'Authenticate to GKE'
 
   # Deploy the application using Skaffold
-  - name: 'google/cloud-sdk:latest'
+  - name: 'google/cloud-sdk'
     entrypoint: 'sh'
     args:
       - -xe
@@ -58,3 +58,4 @@ substitutions:
   _REPO_NAME: "gke-cicd"  # The repository name for your Docker image
   _CLUSTER_NAME: "my-first-cluster-1"  # Replace with your actual GKE cluster name
   #karimm
+
