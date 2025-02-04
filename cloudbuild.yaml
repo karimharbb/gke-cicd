@@ -1,45 +1,31 @@
 
 steps:
   # Build Docker Image 1
-    # args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:latest', './app1']
-    # id: 'Build Docker Image 1'
-    #  - name: 'gcr.io/cloud-builders/docker'
   - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'build'
-      - '-t'
-      - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:latest'
-      - '-t'
-      - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:${SHORT_SHA}'
-      - './app1'
-    id: 'Build Docker Image'
-  
-  # Push Docker Image 1
-    # args: ['push', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image']
-    # id: 'Push Docker Image 1'
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:${_SHORT_SHA}', './app1']
+    id: 'Build Docker Image 1'
 
-    # me: 'gcr.io/cloud-builders/docker'
+  # Push Docker Image 1
   - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'push'
-      - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:latest'
-    id: 'Push Latest Image'
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'push'
-      - 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:${SHORT_SHA}'
-    id: 'Push Commit SHA Image'
+    args: ['push', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:${_SHORT_SHA}']
+    id: 'Push Docker Image 1'
 
   # Build Docker Image 2
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image', './app2']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image:${_SHORT_SHA}', './app2']
     id: 'Build Docker Image 2'
 
   # Push Docker Image 2
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image']
+    args: ['push', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image:${_SHORT_SHA}']
     id: 'Push Docker Image 2'
-
+ # Step 5: Replace the image tag in deployment.yaml with the Git commit SHA
+  - name: 'alpine'
+    args:
+      - 'sh'
+      - '-c'
+      - 'sed -i "s|us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:latest|us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:${SHORT_SHA}|g" ./kubernetes/app1.yaml'
+    id: 'Update Deployment YAML'
   # Authenticate to GKE
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'sh'
@@ -65,7 +51,7 @@ options:
   logging: CLOUD_LOGGING_ONLY
 
 images:
-  - "us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image"
+  - "us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:${_SHORT_SHA}"
   - "us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image"
 
 substitutions:
