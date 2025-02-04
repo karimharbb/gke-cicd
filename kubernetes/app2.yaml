@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: flask-container
-          image: us-central1-docker.pkg.cicd-pipeline-target-1/t-project-449309/gke-cicd/flask-image:latest
+          image: us-central1-docker.pkg.dev/t-project-449309/gke-cicd/flask-image:latest
           ports:
             - containerPort: 8081
 
