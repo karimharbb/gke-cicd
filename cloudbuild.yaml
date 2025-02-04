@@ -2,22 +2,22 @@
 steps:
   # Build Docker Image 1
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:${_SHORT_SHA}',' .', './app1']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image', './app1']
     id: 'Build Docker Image 1'
 
   # Push Docker Image 1
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:${_SHORT_SHA}']
+    args: ['push', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image']
     id: 'Push Docker Image 1'
 
   # Build Docker Image 2
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image:${_SHORT_SHA}',' .', './app2']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image', './app2']
     id: 'Build Docker Image 2'
 
   # Push Docker Image 2
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image:${_SHORT_SHA}']
+    args: ['push', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image']
     id: 'Push Docker Image 2'
 
   # Authenticate to GKE
@@ -45,8 +45,8 @@ options:
   logging: CLOUD_LOGGING_ONLY
 
 images:
-  - "us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:${_SHORT_SHA}"
-  - "us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image:${_SHORT_SHA}"
+  - "us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image"
+  - "us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image"
 
 substitutions:
   _DEPLOYMENT_NAME: "my-deployment"
@@ -57,4 +57,4 @@ substitutions:
   _PIPELINE: "cicd-pipeline"  # The pipeline name created in Cloud Deploy
   _REPO_NAME: "gke-cicd"  # The repository name for your Docker image
   _CLUSTER_NAME: "my-first-cluster-1"  # Replace with your actual GKE cluster name
-  #karimm
+  #karim
