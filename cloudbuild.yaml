@@ -5,6 +5,9 @@ steps:
     args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image', './app1']
     id: 'Build Docker Image 1'
 
+    images:
+    - "us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image"
+
   # Push Docker Image 1
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image']
@@ -14,6 +17,10 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image', './app2']
     id: 'Build Docker Image 2'
+
+    images:
+  # - "us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image"
+    - "us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image"
 
   # Push Docker Image 2
   - name: 'gcr.io/cloud-builders/docker'
@@ -45,7 +52,7 @@ options:
   logging: CLOUD_LOGGING_ONLY
 
 images:
-  - "us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image"
+  # - "us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image"
   - "us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image"
 
 substitutions:
