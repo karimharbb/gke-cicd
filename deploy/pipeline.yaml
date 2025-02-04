@@ -10,4 +10,4 @@ description: cicd delivery pipeline
 serialPipeline:
   stages:
     - targetId: dev # Correct referencee
-    -targetId: prod
+    - targetId: prod
