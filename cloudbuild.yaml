@@ -5,7 +5,7 @@ steps:
     args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image', './app1']
     id: 'Build Docker Image 1'
    
-Step 3: Delete the 'latest' image tag (if exists) from Artifact Registry
+# Step 3: Delete the 'latest' image tag (if exists) from Artifact Registry
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'bash'
     args:
