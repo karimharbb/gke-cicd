@@ -2,7 +2,7 @@
 steps:
   # Build Docker Image 1
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:${_SHORT_SHA} .', './app1']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:${_SHORT_SHA}',' .', './app1']
     id: 'Build Docker Image 1'
 
   # Push Docker Image 1
@@ -12,7 +12,7 @@ steps:
 
   # Build Docker Image 2
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image:${_SHORT_SHA}', './app2']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image:${_SHORT_SHA}',' .', './app2']
     id: 'Build Docker Image 2'
 
   # Push Docker Image 2
