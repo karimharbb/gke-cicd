@@ -26,6 +26,13 @@ steps:
       - '-c'
       - 'sed -i "s|us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:latest|us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:${SHORT_SHA}|g" ./kubernetes/app1.yaml'
     id: 'Update Deployment YAML'
+    # Step 5: Replace the image tag in deployment.yaml with the Git commit SHA
+  - name: 'alpine'
+    args:
+      - 'sh'
+      - '-c'
+      - 'sed -i "s|us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image:latest|us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image:${SHORT_SHA}|g" ./kubernetes/app2.yaml'
+    id: 'Update Deployment YAML-2'
   # Authenticate to GKE
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'sh'
