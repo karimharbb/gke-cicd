@@ -13,7 +13,7 @@ steps:
       - |
         echo "Deleting the 'latest' tag if it exists"
         gcloud artifacts repositories list --project=${_PROJECT_ID} --format="value(name)" | while read repo; do
-          gcloud artifacts docker images delete "us-central1-docker.pkg.dev/${_PROJECT_ID}/${repo}/quickstart-image:latest" --quiet || echo "No latest tag to delete"
+          gcloud artifacts docker images delete "us-central1-docker.pkg.dev/${_PROJECT_ID}/${repo}/quickstart-image" --quiet || echo "No latest tag to delete"
         done
     id: 'Delete latest tag'
 
