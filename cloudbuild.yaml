@@ -7,7 +7,7 @@ steps:
 
   # Push Docker Image 1
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image']
+    args: ['push', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image:latest']
     id: 'Push Docker Image 1'
 
   # Build Docker Image 2
