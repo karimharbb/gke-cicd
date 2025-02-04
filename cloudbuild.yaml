@@ -4,8 +4,11 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image', './app1']
     id: 'Build Docker Image 1'
-   
-# Step 3: Delete the 'latest' image tag (if exists) from Artifact Registry
+  # Push Docker Image 1
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image']
+    id: 'Push Docker Image 1'
+    # Step 3: Delete the 'latest' image tag (if exists) from Artifact Registry
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'bash'
     args:
@@ -17,17 +20,16 @@ steps:
         done
     id: 'Delete latest tag'
 
-  # Push Docker Image 1
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/quickstart-image']
-    id: 'Push Docker Image 1'
-
   # Build Docker Image 2
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image', './app2']
     id: 'Build Docker Image 2'
     
-    # Step 3: Delete the 'latest' image tag (if exists) from Artifact Registry
+  # Push Docker Image 2
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image']
+    id: 'Push Docker Image 2'
+ # Step 3: Delete the 'latest' image tag (if exists) from Artifact Registry
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'bash'
     args:
@@ -38,12 +40,7 @@ steps:
           gcloud artifacts docker images delete "us-central1-docker.pkg.dev/${_PROJECT_ID}/${repo}/flask-image" --quiet || echo "No latest tag to delete"
         done
     id: 'Delete latest tag-2'
-
-  # Push Docker Image 2
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/${_PROJECT_ID}/${_REPO_NAME}/flask-image']
-    id: 'Push Docker Image 2'
-
+    
   # Authenticate to GKE
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'sh'
