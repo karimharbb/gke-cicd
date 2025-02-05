@@ -1,10 +1,10 @@
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
-  name: prod
+  name: poc-prod
   annotations: {}
   labels: {}
-description: prod
+description: poc-prod
 requireApproval: true
 gke:
   cluster: projects/t-project-449309/locations/us-central1-c/clusters/my-first-cluster-1

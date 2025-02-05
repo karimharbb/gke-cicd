@@ -3,13 +3,13 @@
 apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
-  name: cicd-pipeline
+  name: poc-pipeline
   labels:
     app: cicd
-description: cicd delivery pipeline
+description:  poc-pipeline
 serialPipeline:
   stages:
-    - targetId: cicd-pipeline-target-1 #Correct referencee
+    - targetId: poc-dev #Correct referencee
       profiles: []
-    - targetId: prod
+    - targetId: poc-prod
       profiles: []
