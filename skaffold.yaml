@@ -11,3 +11,4 @@ deploy:
   kubectl: {}
   logs:
     prefix: container
+    

@@ -8,4 +8,9 @@ description: prod
 requireApproval: true
 gke:
   cluster: projects/t-project-449309/locations/us-central1-c/clusters/my-first-cluster-1
+executionConfigs:
+  - usages: [RENDER, DEPLOY]
+    serviceAccount: 482203088783-compute@developer.gserviceaccount.com
+ 
+
 
